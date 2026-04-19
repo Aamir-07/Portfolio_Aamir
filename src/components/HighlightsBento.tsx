@@ -51,7 +51,7 @@ export function HighlightsBento() {
             <Award size={22} />
           </div>
           <p className="bento-label">Awards &amp; sports</p>
-          <p className="bento-value">{profile.awards[0]}</p>
+          <p className="bento-value">{profile.awards[0]?.title}</p>
           <p className="bento-hint">Leadership roles across IEEE, SAC, and Sagar Fiesta — see Education.</p>
         </motion.article>
       </div>

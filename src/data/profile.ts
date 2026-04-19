@@ -88,12 +88,42 @@ export const profile = {
       date: "27 Dec 2025",
       score: "Aggregate 68 / 100",
       note: "Logical reasoning, English communication, quantitative aptitude (60 / 100). Demonstrates analytical thinking and job readiness.",
+      file: "",
     },
     {
       name: "AMCAT Spoken English",
       date: "27 Dec 2025",
       score: "Aggregate 60 / 100",
       note: "English speaking & pronunciation (60 / 100). Fluency, grammar, and professional communication.",
+      file: "",
+    },
+    {
+      name: "IEEE Membership Certificate",
+      date: "2026",
+      score: "Professional Membership",
+      note: "IEEE student membership certificate and recognition.",
+      file: "certificates/ieee-membership-certificate.pdf",
+    },
+    {
+      name: "Cloud Chronicals",
+      date: "2026",
+      score: "Certificate of Completion",
+      note: "Cloud learning and practical understanding certificate.",
+      file: "certificates/cloud-chronicals.pdf",
+    },
+    {
+      name: "Foundation of Azure",
+      date: "2026",
+      score: "Certificate of Completion",
+      note: "Microsoft Azure fundamentals and cloud concepts.",
+      file: "certificates/foundation-of-azure.pdf",
+    },
+    {
+      name: "Tech Winter Campaign",
+      date: "2026",
+      score: "Campaign Certificate",
+      note: "Participation and contribution in the Tech Winter Campaign.",
+      file: "certificates/tech-winter-campaign.pdf",
     },
   ],
   leadership: [
@@ -103,7 +133,16 @@ export const profile = {
     "Student Coordinator — Sagar Fiesta (planning, communication, scheduling)",
     "Active participant — Sagar Fiesta 2026",
   ],
-  awards: ["Runner-up — Kho Kho Nodals 2023"],
+  awards: [
+    {
+      title: "Runner-up — Kho Kho Nodals 2023",
+      file: "",
+    },
+    {
+      title: "Sagar Fiesta 2026 — Certificate of Appreciation",
+      file: "awards/sagar-fiesta-certificate.png",
+    },
+  ],
   workshops: [
     {
       title: "Git & GitHub",
@@ -113,5 +152,11 @@ export const profile = {
     },
   ],
   hobbies: ["Anchoring", "Playing Cricket"],
+  hobbyGallery: [
+    { title: "Formal Event Speaking", file: "hobbies/hobby-1-speaking.png" },
+    { title: "Technical Stage Session", file: "hobbies/hobby-2-speaking.png" },
+    { title: "Anchoring", file: "hobbies/hobby-3-anchoring.png" },
+    { title: "Cricket", file: "hobbies/hobby-4-cricket.png" },
+  ],
   sports: ["Kho Kho — Nodal level participant; Runner-up 2023"],
 };

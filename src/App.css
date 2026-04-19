@@ -875,6 +875,47 @@ html[data-theme="light"] .hero-photo {
   break-inside: avoid;
 }
 
+.hobby-gallery {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 640px) {
+  .hobby-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hobby-card {
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.hobby-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+.hobby-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.hobby-card span {
+  display: block;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-soft);
+}
+
 .workshop-block + .workshop-block {
   margin-top: 1rem;
   padding-top: 1rem;
@@ -1185,6 +1226,21 @@ html[data-theme="light"] .hero-photo {
   font-size: 0.88rem;
 }
 
+.cert-file-link {
+  margin-top: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: fit-content;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.cert-file-link:hover {
+  text-decoration: underline;
+}
+
 .bullet-list {
   list-style: none;
   margin: 0;
@@ -1201,6 +1257,17 @@ html[data-theme="light"] .hero-photo {
   margin-bottom: 0.5rem;
   color: var(--text-soft);
   font-size: 0.92rem;
+}
+
+.inline-file-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--accent);
+}
+
+.inline-file-link:hover {
+  text-decoration: underline;
 }
 
 .bullet-list li::before {

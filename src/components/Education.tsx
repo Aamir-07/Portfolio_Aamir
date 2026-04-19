@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { GraduationCap } from "lucide-react";
+import { ExternalLink, GraduationCap } from "lucide-react";
 import { profile } from "../data/profile";
 import { SectionTitle } from "./SectionTitle";
 
@@ -36,7 +36,20 @@ export function Education() {
           <h3 className="sub-block-title spaced">Awards</h3>
           <ul className="bullet-list glass pad">
             {profile.awards.map((a) => (
-              <li key={a}>{a}</li>
+              <li key={a.title}>
+                {a.file ? (
+                  <a
+                    className="inline-file-link"
+                    href={`${import.meta.env.BASE_URL}${a.file}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {a.title} <ExternalLink size={14} />
+                  </a>
+                ) : (
+                  a.title
+                )}
+              </li>
             ))}
           </ul>
         </div>
@@ -58,6 +71,16 @@ export function Education() {
                 </div>
                 <span className="cert-score">{c.score}</span>
                 <p className="cert-note">{c.note}</p>
+                {c.file ? (
+                  <a
+                    className="cert-file-link"
+                    href={`${import.meta.env.BASE_URL}${c.file}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    View certificate <ExternalLink size={14} />
+                  </a>
+                ) : null}
               </motion.li>
             ))}
           </ul>

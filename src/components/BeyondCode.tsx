@@ -13,7 +13,7 @@ export function BeyondCode() {
       />
       <div className="life-grid">
         <motion.div
-          className="glass life-card"
+          className="glass life-card life-wide"
           initial={{ opacity: 0, x: -18 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-50px" }}
@@ -28,6 +28,20 @@ export function BeyondCode() {
               <li key={h}>{h}</li>
             ))}
           </ul>
+          <div className="hobby-gallery">
+            {profile.hobbyGallery.map((item) => (
+              <a
+                key={item.file}
+                className="hobby-card"
+                href={`${import.meta.env.BASE_URL}${item.file}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={`${import.meta.env.BASE_URL}${item.file}`} alt={item.title} loading="lazy" />
+                <span>{item.title}</span>
+              </a>
+            ))}
+          </div>
         </motion.div>
 
         <motion.div
