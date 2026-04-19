@@ -101,17 +101,24 @@ export function Hero() {
 
         <motion.div
           className="hero-visual"
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, scale: 0.92, y: 14 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="hero-photo-card">
+            <motion.span
+              className="hero-photo-ring glow"
+              aria-hidden
+              animate={{ rotate: [360, 0] }}
+              transition={{ duration: 26, repeat: Infinity, ease: "linear" }}
+            />
             <motion.span
               className="hero-photo-ring"
               aria-hidden
               animate={{ rotate: [0, 360] }}
               transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
             />
+            <span className="hero-photo-ring inner" aria-hidden />
             <div className="hero-photo-inner">
               <img
                 className="hero-photo"

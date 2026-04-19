@@ -297,6 +297,7 @@ html[data-theme="light"] .theme-toggle:hover {
   height: min(280px, 78vw);
   max-width: 320px;
   max-height: 320px;
+  filter: drop-shadow(0 14px 30px rgba(56, 189, 248, 0.2));
 }
 
 .hero-photo-ring {
@@ -308,13 +309,32 @@ html[data-theme="light"] .theme-toggle:hover {
   pointer-events: none;
 }
 
+.hero-photo-ring.glow {
+  inset: -14px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: transparent;
+  background: conic-gradient(from 120deg, rgba(56, 189, 248, 0), rgba(56, 189, 248, 0.45), rgba(167, 139, 250, 0.45), rgba(56, 189, 248, 0));
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+  opacity: 0.75;
+}
+
+.hero-photo-ring.inner {
+  inset: 10px;
+  border-color: rgba(148, 163, 184, 0.25);
+  border-style: solid;
+  box-shadow: none;
+}
+
 .hero-photo-inner {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  padding: 4px;
+  padding: 5px;
   background: linear-gradient(145deg, rgba(56, 189, 248, 0.35), rgba(167, 139, 250, 0.3));
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
 }
 
 html[data-theme="light"] .hero-photo-inner {
@@ -327,9 +347,15 @@ html[data-theme="light"] .hero-photo-inner {
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  object-position: center top;
+  object-position: 50% 13%;
   border: 3px solid var(--bg-deep);
   background: #fff;
+  transform: scale(1.06);
+  transition: transform 0.35s ease;
+}
+
+.hero-photo-card:hover .hero-photo {
+  transform: scale(1.1);
 }
 
 html[data-theme="light"] .hero-photo {
@@ -894,26 +920,74 @@ html[data-theme="light"] .hero-photo {
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--bg-elevated);
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  position: relative;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .hobby-card:hover {
   transform: translateY(-3px);
   border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 16px 40px rgba(2, 6, 23, 0.28);
+}
+
+.hobby-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0) 45%, rgba(2, 6, 23, 0.55) 100%);
+  pointer-events: none;
+  opacity: 0.8;
 }
 
 .hobby-card img {
   width: 100%;
-  height: 180px;
+  aspect-ratio: 4 / 3;
+  height: auto;
   object-fit: cover;
+  object-position: center;
   display: block;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.hobby-card:hover img {
+  transform: scale(1.06);
+  filter: saturate(1.06);
 }
 
 .hobby-card span {
-  display: block;
-  padding: 0.6rem 0.75rem;
+  position: absolute;
+  left: 0.65rem;
+  right: 0.65rem;
+  bottom: 0.55rem;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  max-width: calc(100% - 1.3rem);
+  padding: 0.38rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(2, 6, 23, 0.55);
+  backdrop-filter: blur(8px);
   font-size: 0.85rem;
-  color: var(--text-soft);
+  color: #f8fafc;
+  line-height: 1.2;
+}
+
+.hobby-card:nth-child(1) img {
+  object-position: 50% 32%;
+}
+
+.hobby-card:nth-child(2) img {
+  object-position: 50% 34%;
+}
+
+.hobby-card:nth-child(3) img {
+  object-position: 50% 24%;
+}
+
+.hobby-card:nth-child(4) img {
+  object-position: 50% 26%;
 }
 
 .workshop-block + .workshop-block {

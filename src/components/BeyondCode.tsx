@@ -29,17 +29,22 @@ export function BeyondCode() {
             ))}
           </ul>
           <div className="hobby-gallery">
-            {profile.hobbyGallery.map((item) => (
-              <a
+            {profile.hobbyGallery.map((item, idx) => (
+              <motion.a
                 key={item.file}
                 className="hobby-card"
                 href={`${import.meta.env.BASE_URL}${item.file}`}
                 target="_blank"
                 rel="noreferrer"
+                initial={{ opacity: 0, y: 18, scale: 0.98 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-30px" }}
+                transition={{ duration: 0.38, delay: idx * 0.06 }}
+                whileHover={{ y: -6, scale: 1.02 }}
               >
                 <img src={`${import.meta.env.BASE_URL}${item.file}`} alt={item.title} loading="lazy" />
                 <span>{item.title}</span>
-              </a>
+              </motion.a>
             ))}
           </div>
         </motion.div>
