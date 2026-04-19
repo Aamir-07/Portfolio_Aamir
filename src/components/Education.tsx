@@ -59,12 +59,14 @@ export function Education() {
             {profile.certifications.map((c, i) => (
               <motion.li
                 key={c.name}
-                className="glass cert-item"
+                className="glass cert-item cert-item-neo"
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.06, duration: 0.4 }}
+                whileHover={{ y: -5, scale: 1.01 }}
               >
+                <span className="cert-grid-overlay" aria-hidden />
                 <div className="cert-head">
                   <span className="cert-name">{c.name}</span>
                   <span className="cert-date">{c.date}</span>

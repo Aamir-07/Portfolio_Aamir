@@ -40,8 +40,9 @@ export function BeyondCode() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, margin: "-30px" }}
                 transition={{ duration: 0.38, delay: idx * 0.06 }}
-                whileHover={{ y: -6, scale: 1.02 }}
+                whileHover={{ y: -8, scale: 1.025, rotateX: 2, rotateY: -2 }}
               >
+                <span className="hobby-scan" aria-hidden />
                 <img src={`${import.meta.env.BASE_URL}${item.file}`} alt={item.title} loading="lazy" />
                 <span>{item.title}</span>
               </motion.a>
