@@ -14,7 +14,8 @@ export const profile = {
   phone: "+91-7470805152",
   location: "Bhopal, Madhya Pradesh, India — 462038",
   linkedin: "https://www.linkedin.com/in/aamirhusain07",
-  /** Place `Aamir_Husain_2026_Resume.pdf` in `/public` for the download button to work after deploy. */
+  portraitFile: "aamir-profile.png",
+  portraitAlt: "Aamir Husain — professional portrait",
   resumeFileName: "Aamir_Husain_2026_Resume.pdf",
   summaryParagraphs: [
     "Motivated and detail-oriented Computer Science student with hands-on experience in SAP CPI (Cloud Platform Integration) and a strong foundation in Machine Learning. Completed internship at Global Trust IT Services, where I developed and managed integration flows, worked with APIs, and handled data transformation.",

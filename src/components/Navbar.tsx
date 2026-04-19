@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useActiveSection } from "../hooks/useActiveSection";
+import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
   { id: "highlights", label: "Highlights" },
@@ -47,6 +48,8 @@ export function Navbar() {
           Aamir Husain
         </button>
 
+        <div className="nav-spacer desktop-only" aria-hidden />
+
         <ul className="nav-links desktop-only">
           {desktopLinks.map((l) => (
             <li key={l.id}>
@@ -62,14 +65,17 @@ export function Navbar() {
           ))}
         </ul>
 
-        <button
-          type="button"
-          className="nav-toggle mobile-only"
-          aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="nav-end">
+          <ThemeToggle />
+          <button
+            type="button"
+            className="nav-toggle mobile-only"
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
