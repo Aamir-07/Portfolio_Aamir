@@ -55,18 +55,19 @@ export function Education() {
         </div>
         <div>
           <h3 className="sub-block-title">Certifications</h3>
-          <ul className="cert-list">
+          <ul className="cert-list cert-list-featured">
             {profile.certifications.map((c, i) => (
               <motion.li
                 key={c.name}
-                className="glass cert-item cert-item-neo"
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="glass cert-item cert-item-neo cert-item-experience"
+                initial={{ opacity: 0, x: 26 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.06, duration: 0.4 }}
-                whileHover={{ y: -5, scale: 1.01 }}
+                transition={{ delay: i * 0.08, duration: 0.48 }}
+                whileHover={{ y: -6, scale: 1.01 }}
               >
                 <span className="cert-grid-overlay" aria-hidden />
+                <span className="cert-idx">{String(i + 1).padStart(2, "0")}</span>
                 <div className="cert-head">
                   <span className="cert-name">{c.name}</span>
                   <span className="cert-date">{c.date}</span>
