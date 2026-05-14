@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Mic2, Trophy, Users, Wrench } from "lucide-react";
+import { publicUrl } from "@/lib/publicUrl";
 import { profile } from "../data/profile";
 import { SectionTitle } from "./SectionTitle";
 
@@ -33,7 +34,7 @@ export function BeyondCode() {
               <motion.a
                 key={item.file}
                 className="hobby-card"
-                href={`${import.meta.env.BASE_URL}${item.file}`}
+                href={publicUrl(item.file)}
                 target="_blank"
                 rel="noreferrer"
                 initial={{ opacity: 0, y: 18, scale: 0.98 }}
@@ -43,7 +44,7 @@ export function BeyondCode() {
                 whileHover={{ y: -8, scale: 1.025, rotateX: 2, rotateY: -2 }}
               >
                 <span className="hobby-scan" aria-hidden />
-                <img src={`${import.meta.env.BASE_URL}${item.file}`} alt={item.title} loading="lazy" />
+                <img src={publicUrl(item.file)} alt={item.title} loading="lazy" />
                 <span>{item.title}</span>
               </motion.a>
             ))}

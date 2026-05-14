@@ -1,4 +1,4 @@
-# Deploy Vite build to GitHub Pages.
+# Deploy Next.js static export to GitHub Pages.
 # REQUIRED (one-time): Repo → Settings → Pages → Build and deployment → Source: "GitHub Actions"
 # If Source is "Deploy from a branch" or unset, the deploy job fails with 404 "Failed to create deployment".
 
@@ -36,7 +36,7 @@ jobs:
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: out
 
   deploy:
     runs-on: ubuntu-latest

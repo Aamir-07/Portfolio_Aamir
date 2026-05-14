@@ -297,48 +297,70 @@ html[data-theme="light"] .theme-toggle:hover {
   height: min(280px, 78vw);
   max-width: 320px;
   max-height: 320px;
-  filter: drop-shadow(0 14px 30px rgba(56, 189, 248, 0.2));
+  display: grid;
+  place-items: center;
+  filter: drop-shadow(0 18px 36px rgba(56, 189, 248, 0.22));
 }
 
-.hero-photo-ring {
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  border: 1px dashed rgba(56, 189, 248, 0.4);
-  box-shadow: 0 0 48px rgba(99, 102, 241, 0.15);
+.hero-dna-frame {
+  grid-column: 1;
+  grid-row: 1;
+  width: 124%;
+  height: 124%;
+  max-width: none;
   pointer-events: none;
+  z-index: 0;
 }
 
-.hero-photo-ring.glow {
-  inset: -14px;
-  border-style: solid;
-  border-width: 2px;
-  border-color: transparent;
-  background: conic-gradient(from 120deg, rgba(56, 189, 248, 0), rgba(56, 189, 248, 0.45), rgba(167, 139, 250, 0.45), rgba(56, 189, 248, 0));
-  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
-  mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
-  opacity: 0.75;
+.hero-dna-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
 }
 
-.hero-photo-ring.inner {
-  inset: 10px;
-  border-color: rgba(148, 163, 184, 0.25);
-  border-style: solid;
-  box-shadow: none;
+.hero-dna-strand {
+  stroke-dasharray: 14 10;
+  animation: hero-dna-dash 4.5s linear infinite;
+}
+
+.hero-dna-strand-b {
+  animation-duration: 5.8s;
+  animation-direction: reverse;
+}
+
+@keyframes hero-dna-dash {
+  to {
+    stroke-dashoffset: -96;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-dna-strand {
+    animation: none;
+  }
 }
 
 .hero-photo-inner {
-  position: absolute;
-  inset: 0;
+  grid-column: 1;
+  grid-row: 1;
+  position: relative;
+  z-index: 1;
+  width: 78%;
+  aspect-ratio: 1;
   border-radius: 50%;
   padding: 5px;
-  background: linear-gradient(145deg, rgba(56, 189, 248, 0.35), rgba(167, 139, 250, 0.3));
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(145deg, rgba(56, 189, 248, 0.45), rgba(167, 139, 250, 0.38));
+  box-shadow:
+    0 0 0 1px rgba(56, 189, 248, 0.25),
+    0 20px 50px rgba(0, 0, 0, 0.35);
   overflow: hidden;
 }
 
 html[data-theme="light"] .hero-photo-inner {
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+  box-shadow:
+    0 0 0 1px rgba(14, 165, 233, 0.2),
+    0 16px 40px rgba(15, 23, 42, 0.12);
 }
 
 .hero-photo {
@@ -347,7 +369,7 @@ html[data-theme="light"] .hero-photo-inner {
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  object-position: 50% 13%;
+  object-position: 58% 42%;
   border: 3px solid var(--bg-deep);
   background: #fff;
   transform: scale(1.06);

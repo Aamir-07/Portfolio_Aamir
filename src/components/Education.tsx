@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ExternalLink, GraduationCap } from "lucide-react";
+import { publicUrl } from "@/lib/publicUrl";
 import { profile } from "../data/profile";
 import { SectionTitle } from "./SectionTitle";
 
@@ -40,7 +41,7 @@ export function Education() {
                 {a.file ? (
                   <a
                     className="inline-file-link"
-                    href={`${import.meta.env.BASE_URL}${a.file}`}
+                    href={publicUrl(a.file)}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -77,7 +78,7 @@ export function Education() {
                 {c.file ? (
                   <a
                     className="cert-file-link"
-                    href={`${import.meta.env.BASE_URL}${c.file}`}
+                    href={publicUrl(c.file)}
                     target="_blank"
                     rel="noreferrer"
                   >

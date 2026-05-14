@@ -1,12 +1,30 @@
-import { motion } from "framer-motion";
+"use client";
+
+import { useId } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDownRight, Download, Mail, MapPin, Phone } from "lucide-react";
+import { publicUrl } from "@/lib/publicUrl";
+import { helixRungs, helixStrandPath } from "@/lib/dnaHelixPaths";
 import { profile } from "../data/profile";
 import { RotatingRoles } from "./RotatingRoles";
 
-const resumeHref = `${import.meta.env.BASE_URL}${profile.resumeFileName}`;
-const portraitSrc = `${import.meta.env.BASE_URL}${profile.portraitFile}`;
+const DNA_BASE_R = 158;
+const DNA_WAVES = 5.5;
+const DNA_AMP = 11;
+const dnaPathA = helixStrandPath(DNA_BASE_R, DNA_WAVES, DNA_AMP, 0);
+const dnaPathB = helixStrandPath(DNA_BASE_R, DNA_WAVES, DNA_AMP, Math.PI);
+const dnaRungs = helixRungs(DNA_BASE_R, DNA_WAVES, DNA_AMP, 0, Math.PI, 9);
+
+const resumeHref = publicUrl(profile.resumeFileName);
+const portraitSrc = publicUrl(profile.portraitFile);
 
 export function Hero() {
+  const reduceMotion = useReducedMotion();
+  const uid = useId().replace(/:/g, "");
+  const glowId = `hero-dna-glow-${uid}`;
+  const gradA = `hero-dna-grad-a-${uid}`;
+  const gradB = `hero-dna-grad-b-${uid}`;
+
   return (
     <section id="top" className="hero">
       <div className="hero-layout">
@@ -106,19 +124,66 @@ export function Hero() {
           transition={{ delay: 0.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="hero-photo-card">
-            <motion.span
-              className="hero-photo-ring glow"
-              aria-hidden
-              animate={{ rotate: [360, 0] }}
-              transition={{ duration: 26, repeat: Infinity, ease: "linear" }}
-            />
-            <motion.span
-              className="hero-photo-ring"
-              aria-hidden
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
-            />
-            <span className="hero-photo-ring inner" aria-hidden />
+            <div className="hero-dna-frame" aria-hidden>
+              <svg className="hero-dna-svg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
+                <defs>
+                  <filter id={glowId} x="-40%" y="-40%" width="180%" height="180%">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="2.2" result="b" />
+                    <feMerge>
+                      <feMergeNode in="b" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                  <linearGradient id={gradA} x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.95" />
+                    <stop offset="50%" stopColor="#a78bfa" stopOpacity="0.9" />
+                    <stop offset="100%" stopColor="#34d399" stopOpacity="0.85" />
+                  </linearGradient>
+                  <linearGradient id={gradB} x1="100%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#818cf8" stopOpacity="0.9" />
+                    <stop offset="45%" stopColor="#22d3ee" stopOpacity="0.95" />
+                    <stop offset="100%" stopColor="#c084fc" stopOpacity="0.85" />
+                  </linearGradient>
+                </defs>
+                <motion.g
+                  className="hero-dna-helix"
+                  animate={reduceMotion ? { rotate: 0 } : { rotate: [0, 360] }}
+                  transition={
+                    reduceMotion
+                      ? { duration: 0 }
+                      : { duration: 48, repeat: Infinity, ease: "linear" }
+                  }
+                  style={{ transformOrigin: "200px 200px" }}
+                >
+                  <path
+                    className="hero-dna-rung"
+                    d={dnaRungs}
+                    fill="none"
+                    stroke="rgba(148, 163, 184, 0.35)"
+                    strokeWidth={1.2}
+                    strokeLinecap="round"
+                  />
+                  <path
+                    className="hero-dna-strand hero-dna-strand-a"
+                    d={dnaPathA}
+                    fill="none"
+                    stroke={`url(#${gradA})`}
+                    strokeWidth={3.2}
+                    strokeLinecap="round"
+                    filter={`url(#${glowId})`}
+                  />
+                  <path
+                    className="hero-dna-strand hero-dna-strand-b"
+                    d={dnaPathB}
+                    fill="none"
+                    stroke={`url(#${gradB})`}
+                    strokeWidth={3.2}
+                    strokeLinecap="round"
+                    filter={`url(#${glowId})`}
+                  />
+                </motion.g>
+              </svg>
+            </div>
             <div className="hero-photo-inner">
               <img
                 className="hero-photo"
