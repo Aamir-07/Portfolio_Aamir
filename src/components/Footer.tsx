@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className="footer">
       <p>
-        © {new Date().getFullYear()} {profile.name}. Crafted with React &amp; Vite.
+        © {new Date().getFullYear()} {profile.name}. Crafted with Next.js &amp; React.
       </p>
     </footer>
   );

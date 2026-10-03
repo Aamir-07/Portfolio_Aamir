@@ -1363,22 +1363,6 @@ html[data-theme="light"] .hero-photo {
   border-left-color: rgba(167, 139, 250, 0.62);
 }
 
-.cert-idx {
-  position: absolute;
-  top: 0.85rem;
-  right: 0.95rem;
-  font-size: 0.72rem;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-  color: var(--muted);
-  font-weight: 700;
-  padding: 0.24rem 0.45rem;
-  border: 1px solid rgba(148, 163, 184, 0.24);
-  border-radius: 8px;
-  background: rgba(2, 6, 23, 0.24);
-  z-index: 1;
-}
-
 .cert-grid-overlay {
   position: absolute;
   inset: 0;

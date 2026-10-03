@@ -53,6 +53,40 @@ export function Education() {
               </li>
             ))}
           </ul>
+          {profile.publications.length > 0 ? (
+            <>
+              <h3 className="sub-block-title spaced">Publications</h3>
+              <ul className="edu-list">
+                {profile.publications.map((pub, i) => (
+                  <motion.li
+                    key={pub.title}
+                    className="glass edu-item"
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.06, duration: 0.4 }}
+                  >
+                    <span className="edu-period">{pub.date}</span>
+                    <span className="edu-degree">{pub.title}</span>
+                    <span className="edu-school">{pub.venue}</span>
+                    <span className="edu-detail">
+                      Mentor: {pub.mentor} · {pub.authors} authors
+                    </span>
+                    <p className="cert-note" style={{ marginTop: "0.5rem" }}>
+                      {pub.description}
+                    </p>
+                    <div className="tag-row" style={{ marginTop: "0.65rem" }}>
+                      {pub.stack.map((t) => (
+                        <span key={t} className="tag">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </motion.li>
+                ))}
+              </ul>
+            </>
+          ) : null}
         </div>
         <div>
           <h3 className="sub-block-title">Certifications</h3>
@@ -64,11 +98,10 @@ export function Education() {
                 initial={{ opacity: 0, x: 26 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.48 }}
+                transition={{ delay: Math.min(i * 0.04, 0.48), duration: 0.48 }}
                 whileHover={{ y: -6, scale: 1.01 }}
               >
                 <span className="cert-grid-overlay" aria-hidden />
-                <span className="cert-idx">{String(i + 1).padStart(2, "0")}</span>
                 <div className="cert-head">
                   <span className="cert-name">{c.name}</span>
                   <span className="cert-date">{c.date}</span>

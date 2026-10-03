@@ -33,7 +33,7 @@ export function HighlightsBento() {
             <Brain size={22} />
           </div>
           <p className="bento-label">CGPA</p>
-          <p className="bento-value">7.04 / 10</p>
+          <p className="bento-value">{profile.education[0]?.detail.replace("CGPA: ", "") ?? "—"}</p>
           <p className="bento-hint">B.Tech AI &amp; DS — SISTec GN</p>
         </motion.article>
 
